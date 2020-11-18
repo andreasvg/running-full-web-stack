@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+    angular:
+        image: andreasvg/arcticbear-angular:latest
+        container_name: arcticbear-angular
+        ports:
+            - "8081:80"
+        networks:
+            - arctic-bear-network
+        depends_on:
+            - api
+
+    api:
+        image: andreasvg/arcticbear-api:latest
+        container_name: arcticbear-api
+        ports:
+            - "8080:5000"
+        networks:
+            - arctic-bear-network
+        depends_on:
+            - sql
+
+    sql:
+        image: andreasvg/arcticbear-sql:latest
+        container_name: arcticbear-sql-server
+        ports:
+            - "1444:1433"
+        networks:
+            - arctic-bear-network            
+
+networks:
+    arctic-bear-network:
+        driver: bridge
