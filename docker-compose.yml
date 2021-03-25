@@ -1,11 +1,12 @@
 version: '3'
 
 services:
+
     angular:
         image: andreasvg/arcticbear-angular:latest
-        container_name: arcticbear-angular
+        container_name: arcticbear-angular-universal
         ports:
-            - "8081:80"
+            - "4000:4000"
         networks:
             - arctic-bear-network
         depends_on:
